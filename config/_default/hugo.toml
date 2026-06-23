@@ -1,0 +1,20 @@
+# -- Hugo Configuration --
+# Congo theme configuration. See params.toml, languages.en.toml, markup.toml, menus.en.toml.
+
+baseURL = "https://chr0n1x.github.io/"
+defaultContentLanguage = "en"
+locale = "en-us"
+title = "任"
+
+enableRobotsTXT = true
+summaryLength = 0
+
+[pagination]
+  pagerSize = 10
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[params]
+  description = "SRE & Infrastructure Engineer"
+  resumePath = "/files/resume.pdf"

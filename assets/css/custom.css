@@ -1,0 +1,19 @@
+.homepage-profile {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.homepage-profile-content {
+  flex: 1 1 0%;
+  padding-right: 2rem;
+}
+
+.homepage-profile-sidebar {
+  margin-left: 2rem;
+  flex-shrink: 0;
+  align-self: flex-start;
+  position: sticky;
+  top: 6rem;
+}
+

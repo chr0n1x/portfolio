@@ -1,0 +1,11 @@
+<article class="{{ if not .Site.Params.homepage.showRecent }}
+    h-full
+  {{ end }} homepage-profile">
+  <section class="homepage-profile-content prose dark:prose-invert">{{ .Content | emojify }}</section>
+  <aside class="homepage-profile-sidebar not-prose">
+    {{ partial "profile.html" }}
+  </aside>
+</article>
+<section>
+  {{ partial "recent-articles.html" . }}
+</section>
