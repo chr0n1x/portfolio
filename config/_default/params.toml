@@ -1,5 +1,7 @@
 # -- Theme Parameters --
 
+buildDate = "{{BUILD_DATE}}"
+
 colorScheme = "congo"
 defaultAppearance = "light"
 autoSwitchAppearance = true

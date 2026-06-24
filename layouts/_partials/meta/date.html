@@ -1,3 +1,15 @@
-<time datetime="{{ . }}">
-  Last Activity: {{ . | dateFormat "Jan 2006" | emojify }}
-</time>
+{{- if eq (int .Year) 1 -}}
+  {{- with site.Params.buildDate -}}
+    <time datetime="{{ . }}">
+      Last Activity: {{ . | dateFormat "Jan 2006" | emojify }}
+    </time>
+  {{- else -}}
+    <time datetime="0001-01-01">
+      Last Activity: Jan 0001
+    </time>
+  {{- end -}}
+{{- else -}}
+  <time datetime="{{ . }}">
+    Last Activity: {{ . | dateFormat "Jan 2006" | emojify }}
+  </time>
+{{- end -}}
