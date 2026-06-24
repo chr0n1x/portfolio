@@ -1,15 +1,26 @@
-{{- if eq (int .Year) 1 -}}
-  {{- with site.Params.buildDate -}}
-    <time datetime="{{ . }}">
-      Last Activity: {{ . | dateFormat "Jan 2006" | emojify }}
-    </time>
-  {{- else -}}
-    <time datetime="0001-01-01">
-      Last Activity: Jan 0001
-    </time>
+{{- $date := . -}}
+{{- $commitKey := "" -}}
+{{- if reflect.IsMap . -}}
+  {{- $date = .Date -}}
+  {{- with .Page.File -}}
+    {{- $commitKey = .Path -}}
   {{- end -}}
+{{- end -}}
+
+{{- if eq (int $date.Year) 1 -}}
+  {{- with site.Params.buildDate -}}
+    {{- $date = . -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $commit := index site.Data.commits $commitKey -}}
+{{- if $commit.url -}}
+  <a href="{{ $commit.url }}" title="View commit" target="_blank" rel="noopener noreferrer">
+    <time datetime="{{ $date }}">{{ $date | dateFormat "Jan 2006" | emojify }}</time>
+    <span class="ms-0.5 opacity-60 text-sm align-super">↗</span>
+  </a>
 {{- else -}}
-  <time datetime="{{ . }}">
-    Last Activity: {{ . | dateFormat "Jan 2006" | emojify }}
+  <time datetime="{{ $date }}">
+    {{ $date | dateFormat "Jan 2006" | emojify }}
   </time>
 {{- end -}}

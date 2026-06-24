@@ -1,6 +1,6 @@
 # -- Theme Parameters --
 
-buildDate = "{{BUILD_DATE}}"
+buildDate = "2026-06-24T15:45:19-04:00"
 
 colorScheme = "congo"
 defaultAppearance = "light"

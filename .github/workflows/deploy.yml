@@ -68,10 +68,12 @@ jobs:
       - name: Install Go dependencies (Hugo modules)
         run: go mod download
 
-      - name: Inject build date into params
+      - name: Generate build-time data
         env:
           BUILD_DATE: ${{ github.event.head_commit.timestamp }}
-        run: sed -i "s|{{BUILD_DATE}}|$BUILD_DATE|" config/_default/params.toml
+        run: |
+          sed -i "s|{{BUILD_DATE}}|$BUILD_DATE|" config/_default/params.toml
+          bash scripts/generate-commits-json.sh
 
       - name: Build the site
         run: |

@@ -17,3 +17,8 @@
   top: 6rem;
 }
 
+/* Commit date links */
+a[href*="/commit/"] time {
+  text-decoration: underline !important;
+}
+

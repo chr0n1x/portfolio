@@ -2,3 +2,4 @@ public/
 .hugo_build.lock
 resources/
 self-profile.md
+data/commits.json
