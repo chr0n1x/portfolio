@@ -1,6 +1,7 @@
-/* Hide Congo's "skip to main content" link */
-#the-top {
-  display: none !important;
+/* Hide Congo's "skip to main content" link but keep it as a scroll target */
+#the-top, #the-top * {
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 .inline-flex {

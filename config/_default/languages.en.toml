@@ -18,5 +18,5 @@ title = "任"
     { github = "https://github.com/chr0n1x" },
     { linkedin = "https://www.linkedin.com/in/kevin-ran-b706481a/" },
     { email = "mailto:heilong24@gmail.com" },
-    { pencil = "/files/resume.pdf" },
+    { pencil = "files/resume.pdf" },
   ]

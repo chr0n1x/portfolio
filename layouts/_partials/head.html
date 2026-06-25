@@ -1,4 +1,3 @@
-{{/* Custom head partial - formats CSS for Safari compatibility */}}
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,7 +17,7 @@
   {{ $jsAppearance = $jsAppearance | resources.Minify | resources.Fingerprint $algorithm }}
   <script
     type="text/javascript"
-    src="{{ $jsAppearance.RelPermalink }}"
+    src="{{ $jsAppearance.Permalink }}"
     integrity="{{ $jsAppearance.Data.Integrity }}"
   ></script>
   {{ $cssScheme := resources.Get (printf "css/schemes/%s.css" (lower .Site.Params.colorScheme | default "congo")) }}
@@ -32,11 +31,12 @@
   {{ if $cssCustom }}
     {{ $assets.Add "css" (slice $cssCustom) }}
   {{ end }}
-  {{ $bundleCSS := $assets.Get "css" | resources.Concat "css/main.bundle.css" }}
+  {{ $bundleCSS := $assets.Get "css" | resources.Concat "css/main.bundle.css" | resources.Minify | resources.Fingerprint $algorithm }}
   <link
     type="text/css"
     rel="stylesheet"
-    href="{{ $bundleCSS.RelPermalink }}"
+    href="{{ $bundleCSS.Permalink }}"
+    integrity="{{ $bundleCSS.Data.Integrity }}"
   />
   {{ if .Site.Params.enableSearch | default false }}
     {{ $jsFuse := resources.Get "lib/fuse/fuse.min.js" }}
@@ -95,7 +95,7 @@
     <meta name="robots" content="{{ . }}" />
   {{ end }}
   {{ if .Params.canonicalUrl }}
-    <link rel="canonical" href="{{ .Permalink }}" />
+    <link rel="canonical" href="{{ .Params.canonicalUrl }}" />
   {{ else }}
     <link rel="canonical" href="{{ .Permalink }}" />
   {{ end }}
@@ -138,7 +138,7 @@
   {{ end }}
   {{ with .Site.Language.Params.Author.links }}
     {{ range $links := . }}
-      {{ range $name, $url := $links }}<link href="{{ $url }}" rel="me" />{{ end }}
+      {{ range $name, $url := $links }}<link href="{{ $url | relURL }}" rel="me" />{{ end }}
     {{ end }}
   {{ end }}
   {{/* Vendor */}}

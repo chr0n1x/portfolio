@@ -1,7 +1,7 @@
 # -- Hugo Configuration --
 # Congo theme configuration. See params.toml, languages.en.toml, markup.toml, menus.en.toml.
 
-baseURL = "https://chr0n1x.github.io/"
+baseURL = "https://chr0n1x.github.io/portfolio/"
 defaultContentLanguage = "en"
 locale = "en-us"
 title = "任"
