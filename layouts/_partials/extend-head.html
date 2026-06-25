@@ -1,0 +1,32 @@
+<style>
+  .nav-logo-fade {
+    transition: opacity 0.1s ease;
+  }
+  .nav-logo-faded {
+    opacity: 0 !important;
+  }
+</style>
+<script defer>
+  document.addEventListener('DOMContentLoaded', function() {
+    const logo = document.querySelector('nav > div:first-child > a[href="/"]');
+    if (logo) {
+      let ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(function() {
+            const scrollY = window.scrollY || window.pageYOffset;
+            const fadeOut = Math.min(1, scrollY / 120);
+            if (fadeOut >= 1) {
+              logo.classList.add('nav-logo-faded');
+            } else {
+              logo.classList.remove('nav-logo-faded');
+              logo.style.opacity = (1 - fadeOut).toString();
+            }
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    }
+  });
+</script>

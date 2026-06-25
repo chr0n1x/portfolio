@@ -6,15 +6,15 @@
 
 .homepage-profile-content {
   flex: 1 1 0%;
-  padding-right: 2rem;
+  padding-right: 12rem;
 }
 
 .homepage-profile-sidebar {
-  margin-left: 2rem;
+  margin-left: 0;
   flex-shrink: 0;
-  align-self: flex-start;
-  position: sticky;
-  top: 4.5rem;
+  position: fixed;
+  top: calc(4.5rem + 2rem);
+  right: 8rem;
   z-index: 51;
 }
 
@@ -25,8 +25,11 @@ header {
   z-index: 50;
 }
 
+body {
+  overscroll-behavior: contain;
+}
+
 /* Commit date links */
 a[href*="/commit/"] time {
   text-decoration: underline !important;
 }
-
