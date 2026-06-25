@@ -42,11 +42,12 @@ face-to-face ;)_
 
 **Homelab & Infrastructure:** I run a TalosOS Linux Kubernetes cluster on
 Raspberry Pi 5s, managing ~30 application services via ArgoCD GitOps. See
-[rpi-talos](https://github.com/chr0n1x/rpi-talos).
+[my project entry on my homelab for more details!](/projects/homelab/).
 
 **LLM Ops:** Running local inference experiments with Qwen 3.6 models
 (llama.cpp vs vLLM), speculative decoding, and quantized MoE models on consumer
-hardware.
+hardware. This entire site was coded with
+[`qwen3.6-35b-a3b`](https://huggingface.co/unsloth/Qwen3.6-35B-A3B) :D
 
 **Automation Tooling:** Built `nox-bot` — a Go CLI for Telegram messaging,
 LLM-powered service reports, and homelab automation. Also maintain
@@ -57,6 +58,10 @@ LLM-powered service reports, and homelab automation. Also maintain
 others to replicate. Contributing to the Talos ecosystem through configuration
 examples and operational runbooks.
 
+**Open Source & Community:** Arctic Code Vault Contributor - code archived at
+Svalbard. Pull Shark x3 (100+ PRs opened). Active contributor across Adobe,
+Behance, and Adobe Platform orgs on GitHub. I maintain helm-charts for any
+services that I self-host in my homelab!
 
 ## Skills
 
