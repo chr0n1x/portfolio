@@ -13,7 +13,8 @@
   {{- end -}}
 {{- end -}}
 
-{{- $commit := index site.Data.commits $commitKey -}}
+{{- $commits := readFile "data/commits.json" | transform.Unmarshal | default dict -}}
+{{- $commit := index $commits $commitKey -}}
 {{- if $commit.url -}}
   <a href="{{ $commit.url }}" title="View commit" target="_blank" rel="noopener noreferrer">
     <time datetime="{{ $date }}">{{ $date | dateFormat "Jan 2006" | emojify }}</time>
