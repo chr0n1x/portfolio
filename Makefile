@@ -18,3 +18,7 @@ build:
 
 clean:
 	sed -i "s|{{BUILD_DATE}}|{{BUILD_DATE}}|" config/_default/params.toml
+
+container:
+	-podman build -t test-build .
+	-podman rmi -f test-build
