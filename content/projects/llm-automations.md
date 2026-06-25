@@ -1,6 +1,5 @@
 ---
 title: "LLM-backed Automations"
-source: gitea.rannet.duckdns.org/kran/nox-bot
 tags: ["go", "agent-orchestration", "llm-integration", "cron-scheduling", "telegram-api"]
 date: 2026-06-12
 ---

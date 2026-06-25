@@ -1,6 +1,5 @@
 ---
 title: "LLM Inference Benchmarks"
-github: llm-experiments
 tags: ["llama.cpp", "vLLM", "Qwen", "GPU-inference", "speculative-decoding", "CUDA"]
 date: 2026-06-23
 ---

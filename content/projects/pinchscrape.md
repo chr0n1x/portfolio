@@ -1,6 +1,5 @@
 ---
 title: "pinchscrape"
-source: gitea.rannet.duckdns.org/kran/pinchscrape
 tags: ["typescript", "playwright", "web-scraping", "docker", "backup-automation"]
 date: 2026-06-17
 ---

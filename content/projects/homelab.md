@@ -1,6 +1,6 @@
 ---
 title: "Homelab"
-source: gitea.rannet.duckdns.org/kran/rpi-talos
+github: rpi-talos
 tags: ["kubernetes", "talosos", "argocd", "longhorn", "prometheus", "grafana", "arm"]
 date: 2026-06-22
 ---
