@@ -1,3 +1,28 @@
+.inline-flex {
+  display: inline-flex;
+}
+
+.align-middle {
+  vertical-align: middle;
+}
+
+.me-1 {
+  margin-inline-end: 0.25rem;
+}
+
+/* All non-nav links: dotted underline by default, solid on hover */
+a:not(header nav a) {
+  text-decoration: underline dotted !important;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition-property: text-decoration-color;
+  transition-duration: 150ms;
+}
+
+a:not(header nav a):hover {
+  text-decoration-style: solid !important;
+}
+
 .homepage-profile {
   display: flex;
   flex-direction: row;
@@ -29,12 +54,6 @@ body {
   overscroll-behavior: contain;
 }
 
-/* Commit date links */
-a[href*="/commit/"] time {
-  text-decoration: underline !important;
-}
-
-/* Full-width article content on single pages */
 main#main-content section .max-w-prose {
   max-width: none !important;
 }

@@ -1,6 +1,6 @@
 ---
 title: "LUKS Automations"
-github: luks-utils
+github: https://github.com/chr0n1x/luks-utils
 tags: ["openssl", "bash", "security", "disk-encryption"]
 date: 2026-04-14
 ---

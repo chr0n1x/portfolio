@@ -1,6 +1,6 @@
 ---
 title: "Homelab"
-github: rpi-talos
+github: https://github.com/chr0n1x/rpi-talos
 tags: ["kubernetes", "talosos", "argocd", "longhorn", "prometheus", "grafana", "arm"]
 date: 2026-06-22
 ---

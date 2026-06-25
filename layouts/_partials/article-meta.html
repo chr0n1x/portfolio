@@ -12,6 +12,10 @@
   {{ $meta := newScratch }}
 
   {{/* Gather partials for this context */}}
+  {{ if and (eq $scope "single") .Params.github }}
+    {{ $meta.Add "partials" (slice (partial "meta/github-link.html" .)) }}
+  {{ end }}
+
   {{ if .Params.showDate | default (.Site.Params.article.showDate | default true) }}
     {{ $meta.Add "partials" (slice (partial "meta/date.html" (dict "Date" .Date "Page" .))) }}
   {{ end }}
