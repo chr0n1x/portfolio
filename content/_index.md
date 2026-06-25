@@ -4,7 +4,7 @@ title: "任"
 
 ## Intro
 
-HI!
+HI! Welcome to my blog/portfolio...thing.
 
 New York-based SRE and infrastructure engineer. Previously fullstack and
 ecommerce, now focused on Linux systems, Kubernetes, and building tooling that
