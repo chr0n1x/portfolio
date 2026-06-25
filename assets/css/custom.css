@@ -33,3 +33,8 @@ body {
 a[href*="/commit/"] time {
   text-decoration: underline !important;
 }
+
+/* Full-width article content on single pages */
+main#main-content section .max-w-prose {
+  max-width: none !important;
+}

@@ -5,23 +5,79 @@
   .nav-logo-faded {
     opacity: 0 !important;
   }
+  .article-header-block {
+    transition: opacity 0.2s ease;
+  }
 </style>
 <script defer>
   document.addEventListener('DOMContentLoaded', function() {
     const logo = document.querySelector('nav > div:first-child > a[href="/"]');
+    const navLinks = document.querySelector('nav ul');
+
+    // Fade nav logo on scroll (homepage)
     if (logo) {
       let ticking = false;
       window.addEventListener('scroll', function() {
         if (!ticking) {
           requestAnimationFrame(function() {
             const scrollY = window.scrollY || window.pageYOffset;
-            const fadeOut = Math.min(1, scrollY / 120);
+            const fadeOut = Math.min(1, scrollY / 60);
+
             if (fadeOut >= 1) {
               logo.classList.add('nav-logo-faded');
             } else {
               logo.classList.remove('nav-logo-faded');
               logo.style.opacity = (1 - fadeOut).toString();
             }
+
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    }
+
+    // Fade nav links on scroll (only on non-homepage pages)
+    if (window.location.pathname !== '/' && navLinks) {
+      let ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(function() {
+            const scrollY = window.scrollY || window.pageYOffset;
+            const fadeOut = Math.min(1, scrollY / 60);
+
+            if (fadeOut >= 1) {
+              navLinks.classList.add('nav-logo-faded');
+            } else {
+              navLinks.classList.remove('nav-logo-faded');
+              navLinks.style.opacity = (1 - fadeOut).toString();
+            }
+
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+    }
+
+    // Fade article header block when it enters the navbar zone
+    const headers = document.querySelectorAll('main > header, article > header');
+    if (headers.length > 0) {
+      let ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(function() {
+            const navHeight = 4.5 * 16; // 72px
+            headers.forEach(function(header) {
+              const rect = header.getBoundingClientRect();
+              // When the top of the header passes above the navbar bottom
+              if (rect.top < navHeight) {
+                const progress = Math.min(1, (navHeight - rect.top) / 40);
+                header.style.opacity = (1 - progress).toString();
+              } else {
+                header.style.opacity = '1';
+              }
+            });
             ticking = false;
           });
           ticking = true;
