@@ -8,6 +8,8 @@ REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 DATA_DIR="$REPO_ROOT/data"
 OUTPUT="$DATA_DIR/commits.json"
 
+mkdir -p "$DATA_DIR"
+
 ORIGIN_URL="$(git -C "$REPO_ROOT" remote get-url origin 2>/dev/null || echo "")"
 
 # Parse host, owner, repo from SSH URL like git@host:owner/repo.git
