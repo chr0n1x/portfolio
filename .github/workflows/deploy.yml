@@ -1,5 +1,3 @@
-# based on https://gohugo.io/host-and-deploy/host-on-github-pages/
-
 name: Build and deploy
 on:
   push:
@@ -28,7 +26,7 @@ jobs:
       HUGO_VERSION: 0.163.3
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           submodules: recursive
           fetch-depth: 0
@@ -41,27 +39,27 @@ jobs:
 
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
-      - name: Create directory for user-specific executable files
+      - name: Create a local tools directory
         run: mkdir -p "${HOME}/.local"
 
       - name: Install Dart Sass
         run: |
-          curl -sLO "https://github.com/sass/dart-sass/releases/download/${DART_SASS_VERSION}/dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz"
-          tar -C "${HOME}/.local" -xf "dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz"
-          rm "dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz"
+          echo "Installing Dart Sass ${DART_SASS_VERSION}..."
+          curl -sfL --output-dir "${{ runner.temp }}" -O "https://github.com/sass/dart-sass/releases/download/${DART_SASS_VERSION}/dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz"
+          tar -C "${HOME}/.local" -xf "${{ runner.temp }}/dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz"
           echo "${HOME}/.local/dart-sass" >> "${GITHUB_PATH}"
 
       - name: Install Hugo
         run: |
-          curl -sLO "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
+          echo "Installing Hugo ${HUGO_VERSION}..."
+          curl -sfL --output-dir "${{ runner.temp }}" -O "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
           mkdir "${HOME}/.local/hugo"
-          tar -C "${HOME}/.local/hugo" -xf "hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
-          rm "hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
+          tar -C "${HOME}/.local/hugo" -xf "${{ runner.temp }}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
           echo "${HOME}/.local/hugo" >> "${GITHUB_PATH}"
 
-      - name: Verify installations
+      - name: Log tool versions
         run: |
           echo "Dart Sass: $(sass --version)"
           echo "Go: $(go version)"
@@ -77,12 +75,27 @@ jobs:
           sed -i "s|{{BUILD_DATE}}|$BUILD_DATE|" config/_default/params.toml
           bash scripts/generate-commits-json.sh
 
+      - name: Cache restore
+        id: cache-restore
+        uses: actions/cache/restore@v5
+        with:
+          path: ${{ runner.temp }}/hugo_cache
+          key: hugo-${{ github.run_id }}
+          restore-keys: hugo-
+
       - name: Build the site
         run: |
           hugo \
             --gc \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+            --baseURL "${{ steps.pages.outputs.base_url }}/" \
+            --cacheDir "${{ runner.temp }}/hugo_cache"
+
+      - name: Cache save
+        uses: actions/cache/save@v5
+        with:
+          path: ${{ runner.temp }}/hugo_cache
+          key: ${{ steps.cache-restore.outputs.cache-primary-key }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5

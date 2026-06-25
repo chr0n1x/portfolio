@@ -15,6 +15,10 @@ summaryLength = 0
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
+[caches]
+  [caches.images]
+    dir = ":cacheDir/images"
+
 [params]
   description = "SRE & Infrastructure Engineer"
   resumePath = "/files/resume.pdf"
