@@ -10,17 +10,19 @@
   margin-inline-end: 0.25rem;
 }
 
-/* All non-nav links: dotted underline by default, solid on hover */
-a:not(header nav a) {
+/* Non-nav, non-prose links: dotted underline in Congo's primary color (violet) */
+a:not(header nav a):not(.prose a) {
   text-decoration: underline dotted !important;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
-  transition-property: text-decoration-color;
+  text-decoration-color: rgb(139, 92, 246) !important;
+  text-decoration-thickness: 1px !important;
+  text-underline-offset: 2px !important;
+  transition-property: text-decoration-color, text-decoration-style;
   transition-duration: 150ms;
 }
 
-a:not(header nav a):hover {
+a:not(header nav a):not(.prose a):hover {
   text-decoration-style: solid !important;
+  text-decoration-color: rgb(139, 92, 246) !important;
 }
 
 .homepage-profile {
