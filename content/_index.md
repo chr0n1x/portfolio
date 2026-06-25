@@ -31,7 +31,8 @@ makes complex systems manageable.
   **sensibly** wrap all systems that I've worked on above, in a myriad of flavors
   (MVC monoliths, to microservice-based workflow systems).
 
-Current focus: shared LLM memory/context architectures and GitOps pipelines for AI workloads.
+Current focus: shared LLM memory/context architectures and GitOps pipelines for
+AI workloads.
 
 _The above is a _very_ abbreviated splurge of my experience using and
 developing proprietary software! For more details, you'll have to speak to me
@@ -39,23 +40,33 @@ face-to-face ;)_
 
 ## Personal/FOSS Work
 
-**Homelab & Infrastructure:** I run a Talos Linux Kubernetes cluster on Raspberry Pi 5s, managing ~30 application services via ArgoCD GitOps. See [rpi-talos](https://github.com/kran/rpi-talos).
+**Homelab & Infrastructure:** I run a TalosOS Linux Kubernetes cluster on
+Raspberry Pi 5s, managing ~30 application services via ArgoCD GitOps. See
+[rpi-talos](https://github.com/chr0n1x/rpi-talos).
 
-**LLM Ops:** Running local inference experiments with Qwen 3.6 models (llama.cpp vs vLLM), speculative decoding, and quantized MoE models on consumer hardware. See [llm-experiments](https://github.com/kran/llm-experiments).
+**LLM Ops:** Running local inference experiments with Qwen 3.6 models
+(llama.cpp vs vLLM), speculative decoding, and quantized MoE models on consumer
+hardware.
 
-**Automation Tooling:** Built [nox-bot](https://github.com/kran/nox-bot) — a Go CLI for Telegram messaging, LLM-powered service reports, and homelab automation. Also maintain [pinchscrape](https://github.com/kran/pinchscrape) (OPML feed scraper) and various utility scripts ([luks-utils](https://github.com/kran/luks-utils)).
+**Automation Tooling:** Built `nox-bot` — a Go CLI for Telegram messaging,
+LLM-powered service reports, and homelab automation. Also maintain
+`pinchscrape` (OPML feed scraper) and various utility scripts
+([luks-utils](https://github.com/kran/luks-utils)).
 
-**Infrastructure as Code:** Documented my Talos Linux + K8s homelab setup for others to replicate. Contributing to the Talos ecosystem through configuration examples and operational runbooks.
+**Infrastructure as Code:** Documented my Talos Linux + K8s homelab setup for
+others to replicate. Contributing to the Talos ecosystem through configuration
+examples and operational runbooks.
 
 
 ## Skills
 
-**Infrastructure:** Linux (RHEL, Debian, Alpine, Arch/CachyOS), Kubernetes, Talos
-Linux, Docker, Ansible, Terraform, Vault, Traefik, Longhorn, CNPG, NUT UPS
+**Infrastructure:** Linux (RHEL, Debian, Alpine, Arch/CachyOS), Kubernetes,
+Talos Linux, Docker, Ansible, Terraform, Vault, Traefik, Longhorn, CNPG,
+NUT UPS, AWS
 
 **CI/CD & GitOps:** GitHub Actions, Flux CD, Argo CD, Helm, Kustomize, Gitea
 
-**AI/ML Ops:** llama.cpp, vLLM, OpenAI-compatible APIs, speculative decoding,
+**AI/ML Ops:** llama.cpp, OpenAI-compatible APIs, speculative decoding,
 quantized MoE models, LLM-assisted development workflows
 
-**Languages:** Go, Bash, Python, JavaScript/TypeScript
+**Languages:** Go, Ruby, Bash, Python, TypeScript
