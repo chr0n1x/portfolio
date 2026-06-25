@@ -1,3 +1,8 @@
+/* Hide Congo's "skip to main content" link */
+#the-top {
+  display: none !important;
+}
+
 .inline-flex {
   display: inline-flex;
 }
@@ -26,22 +31,19 @@ a:not(header nav a):not(.prose a):hover {
 }
 
 .homepage-profile {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: flex-start;
+  gap: 3rem;
 }
 
 .homepage-profile-content {
-  flex: 1 1 0%;
-  padding-right: 12rem;
+  min-width: 0;
 }
 
 .homepage-profile-sidebar {
-  margin-left: 0;
-  flex-shrink: 0;
-  position: fixed;
+  position: sticky;
   top: calc(4.5rem + 2rem);
-  right: 8rem;
   z-index: 51;
 }
 
