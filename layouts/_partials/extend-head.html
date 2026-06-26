@@ -88,5 +88,11 @@
         }
       });
     }
+
+    // Force resume link to download instead of open inline
+    const resumeLink = document.querySelector('a[href*="resume.pdf"]');
+    if (resumeLink) {
+      resumeLink.setAttribute('download', '');
+    }
   });
 </script>
