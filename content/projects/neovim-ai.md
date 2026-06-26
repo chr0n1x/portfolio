@@ -10,7 +10,7 @@ Treats local LLMs hosted via OpenAI-compatible APIs as first-class citizens!
 
 <!--more-->
 
-![Neovim with Claude Code](/images/projects/neovim-ai/neovim-claude.png)
+![Neovim with Claude Code](https://github.com/chr0n1x/portfolio/blob/main/static/images/projects/neovim-ai/neovim-claude.png?raw=true)
 
 ## Architecture
 
