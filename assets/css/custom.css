@@ -62,3 +62,18 @@ body {
 main#main-content section .max-w-prose {
   max-width: none !important;
 }
+
+/* Stack homepage profile on small screens */
+@media (max-width: 767px) {
+  .homepage-profile {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .homepage-profile-sidebar {
+    position: static;
+  }
+  header {
+    position: static;
+    z-index: auto;
+  }
+}
