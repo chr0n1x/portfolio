@@ -14,7 +14,7 @@ serve:
 build:
 	@bash scripts/generate-commits-json.sh
 	sed -i "s|{{BUILD_DATE}}|$(BUILD_DATE)|" config/_default/params.toml
-	hugo && hugo --minify
+	hugo && hugo --minify --printPathWarnings
 
 clean:
 	sed -i "s|{{BUILD_DATE}}|{{BUILD_DATE}}|" config/_default/params.toml
