@@ -41,7 +41,8 @@
     }
 
     // Fade nav links on scroll (only on non-homepage pages)
-    if (window.location.pathname !== '/' && navLinks) {
+    const homePath = logo ? logo.getAttribute('href').replace(/\/$/, '') : '/';
+    if (window.location.pathname.replace(/\/$/, '') !== homePath && navLinks) {
       let ticking = false;
       window.addEventListener('scroll', function() {
         if (!ticking) {
