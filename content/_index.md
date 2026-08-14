@@ -6,9 +6,15 @@ title: "任"
 
 HI! Welcome to my blog/portfolio...thing.
 
-New York-based SRE and infrastructure engineer. Previously fullstack and
+I'm a New York-based SRE and infrastructure engineer. Previously fullstack and
 ecommerce, now focused on Linux systems, Kubernetes, and building tooling that
 makes complex systems manageable.
+
+_What's with the last name and the Chinese character?_ - the story is that the
+immigration officers could not pronouce my grandfather's name, "任" - pronounced
+in Mandarin, "ruhn". Hence..."ran".
+
+Yes, I've heard _all_ of the jokes 😏
 
 ## Professional Experience
 
