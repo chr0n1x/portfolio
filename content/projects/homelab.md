@@ -144,24 +144,26 @@ Trying to make the LLM stop at every change for approval is **frail**.
 As "the human in the middle" I'm frequently `/compact`ing, finding ways to
 decrease tokens that flood context, etc to preserve the LLMs ability to stay
 in its "smart zone". The more that you flood context with various skills,
-tangential tasks...the higher the chance of the LLM to spew out tokens that
-steer it _away_ from "desirable" behaviour. Which makes sense, since with
-each generated & errant token, every subsequent prediction is affected.
+tangential tasks...the higher the chance that the LLM will spew out tokens that
+ultimately steer it _away_ from "desirable" behaviour. Which makes sense,
+since with each generated & errant token, every subsequent prediction is
+affected.
 
 At least, that's how I conceptually think of it as I stare at all of this
-text filling my harness TUI.
+text filling up my harness TUI.
 
 **TESTS. SCRIPTS THAT `exit <code>` ARE EVERYTHING**
 
-Admittedly, I've only had good luck with the `qwen3.x` series of models.
-I say this because they're seemingly VERY good at adhering to instructions
+Admittedly, I've only had good luck with the `qwen3.x` series of models so
+I can't speak towards other models. But overall, I believe that LLMs are
+VERY good at adhering to instructions
 that indicate boolean `go` or `no-go` signals based on the results of what
 they output. Specifically - if you tell them `after every change, always run
 "make ci" to validate your changes` they will adhere.
 
 This behavior is definitely a result of the class/size of the model, along
 with the context size that you're able to leverage and the harness that you
-use. I overall have this sneaking suspicion that when you tell the LLM to
+use. But I overall have this sneaking suspicion that when you tell the LLM to
 run a suite of tests and evaluate the output (e.g.: linter results, test
 results, etc) - the logs themselves have a residual effect on the LLM. I say
 this because I imagine that, as it reads many many lines of output it forces
