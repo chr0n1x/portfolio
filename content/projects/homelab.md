@@ -128,3 +128,43 @@ expensive commercial monitoring tools.
   bare-metal RPi for lightweight services. This avoids over-provisioning a single node
   type and lets each workload use hardware it was designed for. K8s lets me do this
   with taints/labels. It's all GitOps. Code.
+
+## Learnings - Working with an LLM agent on a production cluster
+
+When AI coding first came about I was relatively _certain_ that infra and
+ops would never be replaced by agents.
+
+Per usual, I was wrong. At least to a degree.
+
+My anecdotal experience though:
+
+**Guardrails written in skills/commands are really damn flaky** Trying to
+make the LLM stop at every change *to stop for approval* is frail. As "the
+human in the middle" I'm frequently `/compact`ing, finding ways to decrease
+tokens that flood context, etc to preserve the LLMs ability to stay in its
+"smart zone".
+
+**TESTS. SCRIPTS THAT `exit <code>` ARE EVERYTHING**
+Admittedly, I've only had good luck with the `qwen3.x` series of models.
+However, they're REALLY good at adhering to instructions that specify
+`go` or `no-go` states of what they do. Specifically - if you tell them
+`after every change, always run "make ci" to validate your changes` they
+will adhere.
+
+So part of this is definitely the model, the context size that you're able
+to leverage, but depending on the harness that you use, I have this sneaking
+suspicion that when you tell the LLM to run a test and evaluate the output
+(like linter results, test results, etc) and it reads many many lines of
+output it forces the entire pipeline (harness, context, tools, LLM) to hold
+more "testing results and reaction behavior" in context itself. So as a
+result, verbose test result logs almost _steer_ the LLM _back towards_
+running tests.
+
+**A strange shift in human work and attention**
+
+It's weird writing/creating automations in this day and age. It's almost
+like we're no longer playing on a boardgame, writing code to get to the
+finish line or "win box" of the game. We're now instead responsible for
+clearly defining the rules that _MAKE UP_ the board game itself. And now
+the LLM "plays through the board" everytime you think you've "codified" the
+rules, be it with skills, AGENTS.md, etc.
